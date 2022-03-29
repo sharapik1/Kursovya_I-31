@@ -11,5 +11,6 @@ namespace KatyaRyrs.Class
 
     {
         IEnumerable<Product> GetProduct(); 
+
     }
 }

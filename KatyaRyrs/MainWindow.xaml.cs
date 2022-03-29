@@ -23,6 +23,8 @@ namespace KatyaRyrs
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private int sortType = 0;
+
         private IEnumerable<Product> _ProductList;
         public IEnumerable<Product> ProductList
         {
@@ -60,6 +62,25 @@ namespace KatyaRyrs
         private void SearchFilterTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             Poisk = PoiskTextBox.Text;
+            Invalidate();
+        }
+
+        private void SortTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        public string[] ProductTypeFilter { get; set; } = {
+            "Без сортировки",
+            "таблетки от кашля",
+            "таблетки от гриппа",
+            "таблетки от живота",
+            "цена по убыванию",
+            "цена по возрастанию" };
+
+     
+        private void SortTypeFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            sortType = SortTypeFilter.SelectedIndex;
             Invalidate();
         }
     }

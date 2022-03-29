@@ -23,7 +23,6 @@ namespace KatyaRyrs.Model
                 return System.IO.File.Exists(imageName) ? new Uri(imageName) : null;
             }
         }
-
-
+       
     }
 }
