@@ -8,7 +8,7 @@ namespace KatyaRyrs.Model
 {
     public class Product
     {
-        public int id { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public int Number { get; set; }
         public string Weight { get; set; }
@@ -23,6 +23,7 @@ namespace KatyaRyrs.Model
                 return System.IO.File.Exists(imageName) ? new Uri(imageName) : null;
             }
         }
+
        
     }
 }

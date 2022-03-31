@@ -62,7 +62,6 @@ C:\Users\User\source\repos\KursProject\KatyaRyrs\bin\Debug\System.Buffers.xml
 C:\Users\User\source\repos\KursProject\KatyaRyrs\bin\Debug\System.Memory.xml
 C:\Users\User\source\repos\KursProject\KatyaRyrs\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\User\source\repos\KursProject\KatyaRyrs\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.AssemblyReference.cache
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\MainWindow.g.cs
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\App.g.cs
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs_MarkupCompile.cache
@@ -75,3 +74,4 @@ C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.Core
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.CopyComplete
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.exe
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.pdb
+C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.AssemblyReference.cache

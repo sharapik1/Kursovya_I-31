@@ -23,7 +23,7 @@ namespace KatyaRyrs
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private int sortType = 0;
+        private int SortType = 0;
 
         private IEnumerable<Product> _ProductList;
         public IEnumerable<Product> ProductList
@@ -31,10 +31,37 @@ namespace KatyaRyrs
             get
             {
                 var Result = _ProductList;
-                if (Poisk != "")               
-                    Result = Result.Where(p => p.Name.IndexOf(Poisk, StringComparison.OrdinalIgnoreCase)>=0);
-                  
-                
+                if (Poisk != "")
+                    Result = Result.Where(p => p.Name.IndexOf(Poisk, StringComparison.OrdinalIgnoreCase) >= 0);
+                switch (SortType)
+                {
+                    // сортировка по названию продукции
+                    case 1:
+                        Result = Result.OrderByDescending(p => p.Name);
+                        break;
+                    case 2:
+                        Result = Result.OrderBy(p => p.Name);
+                        break;
+                    case 3:
+                        Result = Result.OrderByDescending(p => p.Number);
+                        break;
+                    case 4:
+                        Result = Result.OrderBy(p => p.Number);
+                        break;
+                    case 5:
+                        Result = Result.OrderByDescending(p => p.Price);
+                        break;
+                    case 6:
+                        Result = Result.OrderBy(p => p.Price);
+                        break;
+
+
+                }
+
+
+
+
+
                 return Result;
             }
             set
@@ -57,31 +84,43 @@ namespace KatyaRyrs
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(ComponentName));
         }
+      
+       
+        private void SortTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SortType = SortTypeComboBox.SelectedIndex;
+            Invalidate();
+        }
+        public string[] SortList { get; set; } = {
+            "Без сортировки",
+            "название по убыванию",
+            "название по возрастанию",
+            "номер продукта по убыванию",
+            "номер продукта по возрастанию",
+            "цена по убыванию",
+            "цена по возрастанию" };
+        public int CurrentPage { get; private set; }
+        public string SearchFilter { get; private set; }
+
+
         //поиск
         private string Poisk = "";
-        private void SearchFilterTextBox_KeyUp(object sender, KeyEventArgs e)
+      
+
+        private void PoiskTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             Poisk = PoiskTextBox.Text;
             Invalidate();
         }
 
-        private void SortTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PoiskTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-        public string[] ProductTypeFilter { get; set; } = {
-            "Без сортировки",
-            "таблетки от кашля",
-            "таблетки от гриппа",
-            "таблетки от живота",
-            "цена по убыванию",
-            "цена по возрастанию" };
 
-     
-        private void SortTypeFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PoiskTextBox_KeyUp_1(object sender, KeyEventArgs e)
         {
-            sortType = SortTypeFilter.SelectedIndex;
-            Invalidate();
+
         }
     }
 }

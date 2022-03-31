@@ -83,7 +83,7 @@
                 x:Name="PoiskTextBox"
                 Width="150"
                 VerticalAlignment="Center"
-                KeyUp="SearchFilterTextBox_KeyUp"/>
+                KeyUp="PoiskTextBox_KeyUp"/>
             <Label 
                 x:Name="Sortirovka"
         Content="Сортировка: "
@@ -97,31 +97,16 @@
         MinWidth="100"
         SelectionChanged="SortTypeComboBox_SelectionChanged"
         ItemsSource="{Binding SortList}"/>
-            
-            <Label Content="Тип продукции:"
-                   x:Name="TypeProductLabel"
-               VerticalAlignment="Center"
-             />
-
+            <Label Content="Тип продукции" VerticalAlignment="Center"/>
             <ComboBox
-            Width="150"
-            x:Name="SortTypeFilter"
-            VerticalAlignment="Center"
-            SelectedIndex="0"
-            SelectionChanged="SortTypeFilter_SelectionChanged"
-            
-            ItemsSource="{Binding ProductTypeList}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <Label 
-                Content="{Binding Title}"/>
-                    </DataTemplate>
-                    
-                    
-                </ComboBox.ItemTemplate>
-                
-                
+    Width="150"
+    x:Name="ProductTypeFilter"
+    VerticalAlignment="Center"
+    SelectedIndex="0"
+    SelectionChanged="ProductTypeFilter_SelectionChanged"
+    ItemsSource="{Binding ProductTypeList}">
             </ComboBox>
+
         </WrapPanel>
     </Grid>
 </Window>
