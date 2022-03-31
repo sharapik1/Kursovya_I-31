@@ -61,6 +61,24 @@ namespace KatyaRyrs.Class
             }
             return Listproducts;
         }
-        
+
+        public IEnumerable<ProductType> GetProductTypes()
+        {
+            List<ProductType> ListproductTypes = new List<ProductType>();
+            string Sql = "SELECT * FROM Kt_ProductType";
+            try
+            {
+                Connection.Open();
+                try
+                {
+                    MySqlCommand Command = new MySqlCommand(Sql, Connection);
+                    MySqlDataReader Reader = Command.ExecuteReader();
+                    while (Reader.Read())
+                    {
+                        ProductType = new ProductType
+                    }
+                }
+            }
+        }
     }
 }

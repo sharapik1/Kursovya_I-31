@@ -10,7 +10,7 @@ namespace KatyaRyrs.Class
     public interface IDataProvider
 
     {
-        IEnumerable<Product> GetProduct(); 
-
+        IEnumerable<Product> GetProduct();
+        IEnumerable<ProductType> GetProductTypes();
     }
 }
