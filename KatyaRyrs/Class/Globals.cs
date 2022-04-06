@@ -9,5 +9,6 @@ namespace KatyaRyrs.Class
     public class Globals
     {
       public  static IDataProvider dataProvider;
+
     }
 }

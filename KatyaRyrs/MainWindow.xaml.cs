@@ -24,6 +24,7 @@ namespace KatyaRyrs
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private int SortType = 0;
+        public List<ProductType> ProductTypeList { get; set; }
 
         private IEnumerable<Product> _ProductList;
         public IEnumerable<Product> ProductList
@@ -33,6 +34,10 @@ namespace KatyaRyrs
                 var Result = _ProductList;
                 if (Poisk != "")
                     Result = Result.Where(p => p.Name.IndexOf(Poisk, StringComparison.OrdinalIgnoreCase) >= 0);
+
+                if (ProductTypeFilterId > 0)
+                    Result = Result.Where(p => p.CurrentProductType.ID == ProductTypeFilterId);
+
                 switch (SortType)
                 {
                     // сортировка по названию продукции
@@ -57,6 +62,8 @@ namespace KatyaRyrs
 
 
                 }
+            
+
 
 
 
@@ -76,6 +83,8 @@ namespace KatyaRyrs
             DataContext = this;
             Globals.dataProvider = new MySqlDataProvider();
             ProductList = Globals.dataProvider.GetProduct();
+            ProductTypeList = Globals.dataProvider.GetProductTypes().ToList();
+            ProductTypeList.Insert(0, new ProductType { Name = "Все типы" });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -113,14 +122,14 @@ namespace KatyaRyrs
             Invalidate();
         }
 
-        private void PoiskTextBox_TextChanged(object sender, TextChangedEventArgs e)
+      
+        private int ProductTypeFilterId = 0;
+        private void ProductTypeFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            ProductTypeFilterId = (ProductTypeFilter.SelectedItem as ProductType).ID;
+            Invalidate();
         }
 
-        private void PoiskTextBox_KeyUp_1(object sender, KeyEventArgs e)
-        {
-
-        }
+        
     }
 }

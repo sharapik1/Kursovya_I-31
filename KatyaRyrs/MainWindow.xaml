@@ -59,7 +59,7 @@
                                 <TextBlock
                                     Text="{Binding Weight}"/>
                                 <TextBlock
-                                    Text="{Binding Type}"/>
+                                    Text="{Binding CurrentProductType.Name}"/>
                                 
                                 <TextBlock
                                     Text="{Binding Price}"/>

@@ -23,15 +23,22 @@ namespace KatyaRyrs.Class
                 MessageBox.Show(ex.Message);
             }
         }
-            
-       
+
+
 
         public IEnumerable<Product> GetProduct()
         {
+            GetProductTypes();
             List<Product> Listproducts = new List<Product>();
-            string Sql = "SELECT * FROM Kt_Product";
+            string Sql = @"SELECT 
+                      p.*,
+                    pt.`Name`
+                    FROM Kt_Product p
+                    LEFT JOIN 
+                    Kt_ProductType pt ON p.Category = pt.ID";
             try
             {
+
                 Connection.Open();
                 try
                 {
@@ -40,13 +47,14 @@ namespace KatyaRyrs.Class
                     while (Reader.Read())
                     {
                         Product NewProduct = new Product();
-                        NewProduct.id = Reader.GetInt32("id");
+                        NewProduct.ID = Reader.GetInt32("ID");
                         NewProduct.Name = Reader.GetString("Name");
                         NewProduct.Number = Reader.GetInt32("Number");
                         NewProduct.Weight = Reader.GetString("Weight");
-                        NewProduct.Type = Reader.GetString("Type");
-                        NewProduct.Image = Reader.GetString("Image");
+
+                        NewProduct.Image = Reader["Image"].ToString();
                         NewProduct.Price = Reader.GetDecimal("Price");
+                        NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("Category"));
                         Listproducts.Add(NewProduct);
                     }
                 }
@@ -61,24 +69,46 @@ namespace KatyaRyrs.Class
             }
             return Listproducts;
         }
+        private List<ProductType> ProductTypes = null;
+        private ProductType GetProductType(int Id)
+        {
 
+            return ProductTypes.Find(pt => pt.ID == Id);
+        }
         public IEnumerable<ProductType> GetProductTypes()
         {
-            List<ProductType> ListproductTypes = new List<ProductType>();
-            string Sql = "SELECT * FROM Kt_ProductType";
-            try
+            if (ProductTypes == null)
             {
-                Connection.Open();
+                ProductTypes = new List<ProductType>();
+                string Query = "SELECT * FROM Kt_ProductType";
                 try
                 {
-                    MySqlCommand Command = new MySqlCommand(Sql, Connection);
-                    MySqlDataReader Reader = Command.ExecuteReader();
-                    while (Reader.Read())
+                    Connection.Open();
+                    try
                     {
-                        ProductType = new ProductType
+                        MySqlCommand Command = new MySqlCommand(Query, Connection);
+                        MySqlDataReader Reader = Command.ExecuteReader();
+
+                        while (Reader.Read())
+                        {
+                            ProductType NewProductType = new ProductType();
+                            NewProductType.ID = Reader.GetInt32("ID");
+                            NewProductType.Name = Reader.GetString("Name");
+
+                            ProductTypes.Add(NewProductType);
+                        }
+                    }
+                    finally
+                    {
+                        Connection.Close();
                     }
                 }
+                catch (Exception)
+                {
+                }
             }
+
+            return ProductTypes;
         }
     }
 }
