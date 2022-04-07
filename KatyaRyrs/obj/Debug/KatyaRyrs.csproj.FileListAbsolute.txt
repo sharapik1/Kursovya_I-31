@@ -75,3 +75,5 @@ C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.Copy
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.exe
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.pdb
 C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\EditWindow.g.cs
+C:\Users\User\source\repos\KursProject\KatyaRyrs\obj\Debug\EditWindow.baml

@@ -62,12 +62,6 @@ namespace KatyaRyrs
 
 
                 }
-            
-
-
-
-
-
 
                 return Result;
             }
@@ -129,7 +123,8 @@ namespace KatyaRyrs
             ProductTypeFilterId = (ProductTypeFilter.SelectedItem as ProductType).ID;
             Invalidate();
         }
+        private List<ProductType> ProductTypes = null;
 
-        
+
     }
 }

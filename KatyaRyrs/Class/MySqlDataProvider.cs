@@ -55,6 +55,7 @@ namespace KatyaRyrs.Class
                         NewProduct.Image = Reader["Image"].ToString();
                         NewProduct.Price = Reader.GetDecimal("Price");
                         NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("Category"));
+                        NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("ProductTypeID"));
                         Listproducts.Add(NewProduct);
                     }
                 }
@@ -109,6 +110,11 @@ namespace KatyaRyrs.Class
             }
 
             return ProductTypes;
+        }
+
+        public void SaveProduct(Product ChangedProduct)
+        {
+            throw new NotImplementedException();
         }
     }
 }

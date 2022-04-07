@@ -12,5 +12,6 @@ namespace KatyaRyrs.Class
     {
         IEnumerable<Product> GetProduct();
         IEnumerable<ProductType> GetProductTypes();
+        void SaveProduct(Product ChangedProduct);
     }
 }
