@@ -105,6 +105,8 @@
     SelectedIndex="0"
     SelectionChanged="ProductTypeFilter_SelectionChanged"
     ItemsSource="{Binding ProductTypeList}">
+                
+                
             </ComboBox>
 
         </WrapPanel>
