@@ -79,6 +79,7 @@ namespace KatyaRyrs
             ProductList = Globals.dataProvider.GetProduct();
             ProductTypeList = Globals.dataProvider.GetProductTypes().ToList();
             ProductTypeList.Insert(0, new ProductType { Name = "Все типы" });
+            var NewEditWindow = new EditWindow(new Product());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -125,7 +126,15 @@ namespace KatyaRyrs
         }
 
         private List<ProductType> ProductTypes = null;
-
-
+   
+        private void ProductListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var NewEditWindow = new EditWindow(ProductListView.SelectedItem as Product);
+            if ((bool)NewEditWindow.ShowDialog())
+            {
+                // при успешном сохранении продукта перечитываем список продукции
+                ProductList = Globals.dataProvider.GetProduct();
+            }
+        }
     }
 }

@@ -15,6 +15,7 @@
       
         <StackPanel Grid.Column="1"
             Margin="5">
+            
 
             <Label Content="Наименование продукта"/>
             <TextBox Text="{Binding CurrentProduct.Name}"/>
@@ -25,12 +26,8 @@
             <Label Content="Вес"/>
             <TextBox Text="{Binding CurrentProduct.Weight}"/>
 
-            <Label Content="Тип"/>
-            <TextBox Text="{Binding CurrentProduct.Type}"/>
 
-            <Label Content="Фото"/>
-            <TextBox Text="{Binding CurrentProduct.Image}"/>
-
+         
             <Label Content="Цена"/>
             <TextBox Text="{Binding CurrentProduct.Price}"/>
 

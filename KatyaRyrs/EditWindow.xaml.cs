@@ -29,7 +29,7 @@ namespace KatyaRyrs
         {
             get
             {
-                return CurrentProduct.ID == 0 ? "Новый продукт" : "Редактирование продукта";
+                return CurrentProduct.ID ==  0 ? "Новый продукт" : "Редактирование продукта";
             }
         }
 
@@ -71,14 +71,11 @@ namespace KatyaRyrs
         {
             try
             {
-                if (CurrentProduct.Price < 0)
-                    throw new Exception("Цена продукта не может быть отрицательной");
-                var ProductList = Globals.dataProvider.GetProduct().ToList();
-                if (ProductList.Find(i => i.Number == CurrentProduct.Number & i.ID != CurrentProduct.ID) != null)
-                    throw new Exception("Артикул не уникален");
+            
 
                 Globals.dataProvider.SaveProduct(CurrentProduct);
                 DialogResult = true;
+                Invalidate();
             }
             catch (Exception ex)
             {

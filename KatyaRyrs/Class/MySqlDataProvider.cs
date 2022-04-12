@@ -54,6 +54,7 @@ namespace KatyaRyrs.Class
 
                         NewProduct.Image = Reader["Image"].ToString();
                         NewProduct.Price = Reader.GetDecimal("Price");
+                      //  NewProduct.Category = Reader.GetInt32("Category");
                         NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("Category"));
                       //  NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("ProductTypeID"));
                         Listproducts.Add(NewProduct);
@@ -124,16 +125,49 @@ namespace KatyaRyrs.Class
                     Number,
                     Weight,
                     Image,
-                    Price,
-                    Category)
+                    Price)
                     VALUES
                     (@Name,
                     @Number,
                     @Weight,
                     @Image,
-                    @Price,
-                    @Category)";
+                    @Price)";
+
+                    MySqlCommand Command = new MySqlCommand(Query, Connection);
+                    Command.Parameters.AddWithValue("@Name", ChangedProduct.Name);
+                    Command.Parameters.AddWithValue("@Number", ChangedProduct.Number);
+                    Command.Parameters.AddWithValue("@Weight", ChangedProduct.Weight);
+                    Command.Parameters.AddWithValue("@Image", ChangedProduct.Image);
+                    Command.Parameters.AddWithValue("@Price", ChangedProduct.Price);
+                    Command.ExecuteNonQuery();
                 }
+                else
+                {
+                    string Query = @"UPDATE Kt_Product
+                    SET
+                    Name = @Name,
+                    Number = @Number,
+                    Weight = @Weight,
+                    Image = @Image,
+                    Price = @Price,
+                    Category = @Category
+                        
+                    WHERE ID = @ID";
+
+                    MySqlCommand Command = new MySqlCommand(Query, Connection);
+                    Command.Parameters.AddWithValue("@Name", ChangedProduct.Name);
+                    Command.Parameters.AddWithValue("@Number", ChangedProduct.Number);
+                    Command.Parameters.AddWithValue("@Weight", ChangedProduct.Weight);
+                    Command.Parameters.AddWithValue("@Image", ChangedProduct.Image);
+                    Command.Parameters.AddWithValue("@Price", ChangedProduct.Price);
+                    Command.Parameters.AddWithValue("@Category", ChangedProduct.CurrentProductType.ID);
+                    Command.Parameters.AddWithValue("@ID", ChangedProduct.ID);
+                    Command.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                Connection.Close();
             }
         }
     }
