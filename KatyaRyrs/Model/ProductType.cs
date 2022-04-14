@@ -9,10 +9,10 @@ namespace KatyaRyrs.Class
     public class ProductType
     {
         public int ID { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public override string ToString()
         {
-            return Name;
+            return Title;    
         }
     }
 }

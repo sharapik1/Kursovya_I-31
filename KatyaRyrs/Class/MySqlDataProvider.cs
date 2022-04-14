@@ -32,7 +32,7 @@ namespace KatyaRyrs.Class
             List<Product> Listproducts = new List<Product>();
             string Sql = @"SELECT 
                       p.*,
-                    pt.`Name`
+                    pt.`Title`
                     FROM Kt_Product p
                     LEFT JOIN 
                     Kt_ProductType pt ON p.Category = pt.ID";
@@ -95,7 +95,7 @@ namespace KatyaRyrs.Class
                         {
                             ProductType NewProductType = new ProductType();
                             NewProductType.ID = Reader.GetInt32("ID");
-                            NewProductType.Name = Reader.GetString("Name");
+                            NewProductType.Title = Reader.GetString("Title");
 
                             ProductTypes.Add(NewProductType);
                         }

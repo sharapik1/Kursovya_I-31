@@ -32,8 +32,7 @@ namespace KatyaRyrs
             get
             {
                 var Result = _ProductList;
-                if (Poisk != "")
-                    Result = Result.Where(p => p.Name.IndexOf(Poisk, StringComparison.OrdinalIgnoreCase) >= 0);
+               
 
                 if (ProductTypeFilterId > 0)
                     Result = Result.Where(p => p.CurrentProductType.ID == ProductTypeFilterId);
@@ -62,6 +61,8 @@ namespace KatyaRyrs
 
 
                 }
+                if (Poisk != "")
+                    Result = Result.Where(p => p.Name.IndexOf(Poisk, StringComparison.OrdinalIgnoreCase) >= 0);
 
                 return Result;
             }
@@ -78,7 +79,7 @@ namespace KatyaRyrs
             Globals.dataProvider = new MySqlDataProvider();
             ProductList = Globals.dataProvider.GetProduct();
             ProductTypeList = Globals.dataProvider.GetProductTypes().ToList();
-            ProductTypeList.Insert(0, new ProductType { Name = "Все типы" });
+            ProductTypeList.Insert(0, new ProductType { Title = "Все типы" });
             var NewEditWindow = new EditWindow(new Product());
         }
 
@@ -125,7 +126,7 @@ namespace KatyaRyrs
             Invalidate();
         }
 
-        private List<ProductType> ProductTypes = null;
+      //      private List<ProductType> ProductTypes = null;
    
         private void ProductListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
