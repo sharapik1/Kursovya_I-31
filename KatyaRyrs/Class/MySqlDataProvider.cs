@@ -54,9 +54,9 @@ namespace KatyaRyrs.Class
 
                         NewProduct.Image = Reader["Image"].ToString();
                         NewProduct.Price = Reader.GetDecimal("Price");
-                      //  NewProduct.Category = Reader.GetInt32("Category");
+                        //  NewProduct.Category = Reader.GetInt32("Category");
                         NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("Category"));
-                      //  NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("ProductTypeID"));
+                        //  NewProduct.CurrentProductType = GetProductType(Reader.GetInt32("ProductTypeID"));
                         Listproducts.Add(NewProduct);
                     }
                 }
@@ -125,13 +125,15 @@ namespace KatyaRyrs.Class
                     Number,
                     Weight,
                     Image,
-                    Price)
+                    Price,
+                    Category)
                     VALUES
                     (@Name,
                     @Number,
                     @Weight,
                     @Image,
-                    @Price)";
+                    @Price,
+                    @Category)";
 
                     MySqlCommand Command = new MySqlCommand(Query, Connection);
                     Command.Parameters.AddWithValue("@Name", ChangedProduct.Name);
@@ -139,6 +141,7 @@ namespace KatyaRyrs.Class
                     Command.Parameters.AddWithValue("@Weight", ChangedProduct.Weight);
                     Command.Parameters.AddWithValue("@Image", ChangedProduct.Image);
                     Command.Parameters.AddWithValue("@Price", ChangedProduct.Price);
+                    Command.Parameters.AddWithValue("@Category", ChangedProduct.CurrentProductType.ID);
                     Command.ExecuteNonQuery();
                 }
                 else
@@ -168,6 +171,29 @@ namespace KatyaRyrs.Class
             finally
             {
                 Connection.Close();
+            }
+        }
+
+        public void DeleteProduct(Product DelProduct)
+        {
+            try
+            {
+                Connection.Open();
+                try
+                {
+                    string Query = "DELETE FROM Kt_Product WHERE ID = @ID";
+                    MySqlCommand command = new MySqlCommand(Query, Connection);
+                    command.Parameters.AddWithValue("@ID", DelProduct.ID);
+                    command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

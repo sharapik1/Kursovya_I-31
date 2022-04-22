@@ -27,6 +27,7 @@ namespace KatyaRyrs
         public List<ProductType> ProductTypeList { get; set; }
 
         private IEnumerable<Product> _ProductList;
+        public Product DelProduct;
         public IEnumerable<Product> ProductList
         {
             get
@@ -80,7 +81,7 @@ namespace KatyaRyrs
             ProductList = Globals.dataProvider.GetProduct();
             ProductTypeList = Globals.dataProvider.GetProductTypes().ToList();
             ProductTypeList.Insert(0, new ProductType { Title = "Все типы" });
-            var NewEditWindow = new EditWindow(new Product());
+            // var NewEditWindow = new EditWindow(new Product());
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -135,6 +136,28 @@ namespace KatyaRyrs
             {
                 // при успешном сохранении продукта перечитываем список продукции
                 ProductList = Globals.dataProvider.GetProduct();
+            }
+        }
+
+        private void AddproductsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var NewEditWindow = new EditWindow(new Product());
+            if ((bool)NewEditWindow.ShowDialog())
+            {
+                ProductList = Globals.dataProvider.GetProduct();
+            }
+        }
+
+        private void DeletButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Globals.dataProvider.DeleteProduct(DelProduct);
+                Invalidate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

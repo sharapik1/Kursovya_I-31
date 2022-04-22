@@ -25,6 +25,7 @@ namespace KatyaRyrs
     {
         public IEnumerable<ProductType> ProductTypes { get; set; }
         public Product CurrentProduct { get; set; }
+        public Product DelProduct;
         public string WindowName
         {
             get
@@ -38,7 +39,7 @@ namespace KatyaRyrs
         private void Invalidate()
         {
             if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs("CatList"));
+                PropertyChanged(this, new PropertyChangedEventArgs("ProductList"));
         }
         public EditWindow(Product EditProduct)
         {
@@ -71,8 +72,6 @@ namespace KatyaRyrs
         {
             try
             {
-            
-
                 Globals.dataProvider.SaveProduct(CurrentProduct);
                 DialogResult = true;
                 Invalidate();
@@ -81,6 +80,11 @@ namespace KatyaRyrs
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void DeletButton_Click(object sender, RoutedEventArgs e)
+        {
+          
         }
     }
 }

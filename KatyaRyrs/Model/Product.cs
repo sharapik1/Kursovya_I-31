@@ -18,7 +18,6 @@ namespace KatyaRyrs.Model
         public decimal Price { get; set; }
      //   public int ProductTypeID { get; set; }
         public ProductType CurrentProductType { get; set; }
-        public int Category { get; set; }
 
         public Uri ImagePreview
         {
