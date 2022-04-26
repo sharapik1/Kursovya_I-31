@@ -60,13 +60,13 @@
                                 <TextBlock
                                     Text="{Binding Weight}"/>
                                 <TextBlock
-                                    Text="{Binding CurrentProductType.Name}"/>
+                                    Text="{Binding CurrentProductType.Title}"/>
                           
                                 <TextBlock
                                     Text="{Binding Price}"/>
                                 <Button
                 Content="Удалить"
-                          Tag="{Binding DelProduct.ID}"
+                          Tag="{Binding ID}"
                 x:Name="DeletButton"
                 Click="DeletButton_Click"
                 Margin="5"

@@ -150,14 +150,16 @@ namespace KatyaRyrs
 
         private void DeletButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var id = Convert.ToInt32((sender as Button).Tag.ToString());
+            foreach (var DelProduct in ProductList)
             {
-                Globals.dataProvider.DeleteProduct(DelProduct);
-                Invalidate();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                if (DelProduct.ID == id)
+                {
+                    Globals.dataProvider.DeleteProduct(DelProduct);
+                    ProductList = Globals.dataProvider.GetProduct();
+                    break;
+
+                }
             }
         }
     }
