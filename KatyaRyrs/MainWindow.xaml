@@ -9,74 +9,102 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition />
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <ListView
             MouseDoubleClick="ProductListView_MouseDoubleClick"
-            Grid.Column="1"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             Grid.Row="1"
             x:Name="ProductListView"
+            HorizontalAlignment="Center"
             ItemsSource="{Binding ProductList}">
-            <ListView.ItemContainerStyle>
-                <Style 
-            TargetType="ListViewItem">
-                    <Setter 
-                Property="HorizontalContentAlignment"
-                Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        />
+                </ItemsPanelTemplate>
+                
+            </ListView.ItemsPanel>
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border 
-            BorderThickness="1" 
-            BorderBrush="Black" 
-            CornerRadius="5">
 
-                        <Grid 
-    Margin="10" 
-    HorizontalAlignment="Stretch">
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="64"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
 
-                            
-                            <Image
-    Width="64" 
-    Height="64"
+                    <Grid Margin="20" Width="310">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+
+
+
+
+                        <Image
+    Width="170" 
+    Height="170"
+                           HorizontalAlignment="Right"
     Source="{Binding ImagePreview}" />
                             <StackPanel
                             Grid.Column="1"
                             Margin="5"
                             Orientation="Vertical">
                                 <TextBlock
+                                    Grid.Row="0"
+                                    FontSize="14"
+                                    VerticalAlignment="Center"
+                                    TextAlignment="Center"
+                                    Width="300"
+                                    TextWrapping="Wrap"
+                                    HorizontalAlignment="Left"
+                                    Margin="5 5"
+                                    FontWeight="Black"
                                     x:Name="NameBlock"
                                     Text="{Binding Name}"/>
                                 <TextBlock
+                                    Grid.Row="1" 
+                                    FontSize="12"
+                                    HorizontalAlignment="Left"
                                     Text="{Binding Number}"/>
                                 <TextBlock
+                                    Grid.Row="2"
+                                    FontSize="12"
+                                    HorizontalAlignment="Left"
                                     Text="{Binding Weight}"/>
                                 <TextBlock
+                                    Grid.Row="3"
+                                    FontSize="12"
+                                    HorizontalAlignment="Left"
                                     Text="{Binding CurrentProductType.Title}"/>
                           
                                 <TextBlock
-                                    Text="{Binding Price}"/>
+                                    Grid.Row="4"
+                                   HorizontalAlignment="Left"
+                                    FontSize="14"
+                                     Width="300"
+                                    FontWeight="Bold"
+                                    Text="{Binding Price, StringFormat={}{0:N2} РУБ}"/>
                                 <Button
+                                    HorizontalAlignment="Left"
                 Content="Удалить"
                           Tag="{Binding ID}"
                 x:Name="DeletButton"
                 Click="DeletButton_Click"
                 Margin="5"
-                Width="150"
+                Width="60"
                 Height="20"
                 />
                             </StackPanel>
                         </Grid>
 
-                    </Border>
+                   
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -115,8 +143,6 @@
     SelectedIndex="0"
     SelectionChanged="ProductTypeFilter_SelectionChanged"
     ItemsSource="{Binding ProductTypeList}">
-                
-                
             </ComboBox>
             <Button
              x:Name="AddproductsButton"
