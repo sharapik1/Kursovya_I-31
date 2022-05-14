@@ -28,6 +28,45 @@ namespace KatyaRyrs.Model
             }
         }
 
+        public void Save()
+        {
+            if(Name == null)
+            {
+                throw new Exception("Имя продукта не заполнено");
+            }
+
+            if(CurrentProductType == null)
+            {
+                throw new Exception("Тип продукта не заполнен");
+            }
+
+            if(Price <= 0)
+            {
+                throw new Exception("Цена продукта не может быть меньше или равна нулю");
+            }
+
+            if(Weight == null)
+            {
+                throw new Exception("Вес продукта не заполнен");
+            }
+
+            if(Number <= 0)
+            {
+                throw new Exception("Номер продукта не может быть меньше или равен нулю");
+            }
+
+        }
+
+        public void Delete()
+        {
+            if(ID == 0)
+            {
+                throw new Exception("Нельзя удалить несуществующий продукт");
+            }
+        }
+
+        
+
        
     }
 }

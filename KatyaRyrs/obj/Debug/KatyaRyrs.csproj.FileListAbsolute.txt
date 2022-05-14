@@ -118,3 +118,5 @@ C:\Users\aleks\source\repos\KursC\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.CoreCompi
 C:\Users\aleks\source\repos\KursC\KatyaRyrs\obj\Debug\KatyaRyrs.csproj.CopyComplete
 C:\Users\aleks\source\repos\KursC\KatyaRyrs\obj\Debug\KatyaRyrs.exe
 C:\Users\aleks\source\repos\KursC\KatyaRyrs\obj\Debug\KatyaRyrs.pdb
+C:\Users\User\source\repos\KursProject\KatyaRyrs\bin\Debug\DataProviderLib.dll
+C:\Users\User\source\repos\KursProject\KatyaRyrs\bin\Debug\DataProviderLib.pdb
