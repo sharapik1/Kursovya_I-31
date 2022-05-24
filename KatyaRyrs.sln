@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatyaRyrs", "KatyaRyrs\Katy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProviderLib", "DataProviderLib\DataProviderLib.csproj", "{1551D97C-D225-453E-A93E-AA63B5C0FA25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeDataProviderLib", "FakeDataProviderLib\FakeDataProviderLib.csproj", "{666581B2-DA37-4D92-BABB-164DC789BDD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KatyaRyrs.Test", "UnitTest\KatyaRyrs.Test.csproj", "{C07EEC99-BFCC-44E8-A20E-3B061E96C333}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{1551D97C-D225-453E-A93E-AA63B5C0FA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1551D97C-D225-453E-A93E-AA63B5C0FA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1551D97C-D225-453E-A93E-AA63B5C0FA25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{666581B2-DA37-4D92-BABB-164DC789BDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666581B2-DA37-4D92-BABB-164DC789BDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666581B2-DA37-4D92-BABB-164DC789BDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666581B2-DA37-4D92-BABB-164DC789BDD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07EEC99-BFCC-44E8-A20E-3B061E96C333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07EEC99-BFCC-44E8-A20E-3B061E96C333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07EEC99-BFCC-44E8-A20E-3B061E96C333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07EEC99-BFCC-44E8-A20E-3B061E96C333}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

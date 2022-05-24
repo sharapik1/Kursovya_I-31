@@ -1,0 +1,9 @@
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\bin\Debug\FakeDataProviderLib.dll
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\bin\Debug\FakeDataProviderLib.pdb
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\bin\Debug\DataProviderLib.dll
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\bin\Debug\DataProviderLib.pdb
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.csproj.CopyComplete
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.dll
+C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.pdb

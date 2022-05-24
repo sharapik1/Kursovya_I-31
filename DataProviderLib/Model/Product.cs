@@ -30,7 +30,7 @@ namespace KatyaRyrs.Model
 
         public void Save()
         {
-            if(Name == null)
+            if(Name == "")
             {
                 throw new Exception("Имя продукта не заполнено");
             }
@@ -45,7 +45,7 @@ namespace KatyaRyrs.Model
                 throw new Exception("Цена продукта не может быть меньше или равна нулю");
             }
 
-            if(Weight == null)
+            if(Weight == "")
             {
                 throw new Exception("Вес продукта не заполнен");
             }
