@@ -839,6 +839,327 @@ private int ProductTypeFilterId = 0;
 ```
 12. Создание добавления продукта:
 
+Чтобы добавить продукт,нужно реализовать метод сохранения нового продукта, реализовываем всё также в классе,который наследует интерфейс(MySqlDataprovider):
+
+```
+public void SaveProduct(Product ChangedProduct)
+        {
+            Connection.Open();
+            try
+            {
+                if (ChangedProduct.ID == 0)
+                {
+                    string Query = @"INSERT INTO Kt_Product
+                    (Name,
+                    Number,
+                    Weight,
+                    Image,
+                    Price,
+                    Category)
+                    VALUES
+                    (@Name,
+                    @Number,
+                    @Weight,
+                    @Image,
+                    @Price,
+                    @Category)";
+
+                    MySqlCommand Command = new MySqlCommand(Query, Connection);
+                    Command.Parameters.AddWithValue("@Name", ChangedProduct.Name);
+                    Command.Parameters.AddWithValue("@Number", ChangedProduct.Number);
+                    Command.Parameters.AddWithValue("@Weight", ChangedProduct.Weight);
+                    Command.Parameters.AddWithValue("@Image", ChangedProduct.Image);
+                    Command.Parameters.AddWithValue("@Price", ChangedProduct.Price);
+                    Command.Parameters.AddWithValue("@Category", ChangedProduct.CurrentProductType.ID);
+                    Command.ExecuteNonQuery();
+                }
+                else
+                {
+                    string Query = @"UPDATE Kt_Product
+                    SET
+                    Name = @Name,
+                    Number = @Number,
+                    Weight = @Weight,
+                    Image = @Image,
+                    Price = @Price,
+                    Category = @Category
+                        
+                    WHERE ID = @ID";
+
+                    MySqlCommand Command = new MySqlCommand(Query, Connection);
+                    Command.Parameters.AddWithValue("@Name", ChangedProduct.Name);
+                    Command.Parameters.AddWithValue("@Number", ChangedProduct.Number);
+                    Command.Parameters.AddWithValue("@Weight", ChangedProduct.Weight);
+                    Command.Parameters.AddWithValue("@Image", ChangedProduct.Image);
+                    Command.Parameters.AddWithValue("@Price", ChangedProduct.Price);
+                    Command.Parameters.AddWithValue("@Category", ChangedProduct.CurrentProductType.ID);
+                    Command.Parameters.AddWithValue("@ID", ChangedProduct.ID);
+                    Command.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+```
+Создаём окно, в котором будем создавать продукт:
+
+![](./Photo/addproduct.PNG)
+
+Переход на это окно будет при нажатии кнопки в главном окне:
+
+```
+private void AddproductsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var NewEditWindow = new EditWindow(new Product());
+            if ((bool)NewEditWindow.ShowDialog())
+            {
+                ProductList = Globals.dataProvider.GetProduct();
+            }
+        }
+```
+
+Реализуем в этом окне кнопку сохранения продукта:
+
+```
+ private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Globals.dataProvider.SaveProduct(CurrentProduct);
+                DialogResult = true;
+                Invalidate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+```
+
+13. Редактирование продукта:
+
+Для редактирования продукта будем использовать то же самое окно что и для создания, оно будет открываться при двойном нажатии на продукт в главном окне, для этого в ListView пишем свойство:
+
+```
+MouseDoubleClick="ProductListView_MouseDoubleClick"
+```
+
+Реализация метода двойного клика по продукту:
+
+```
+private void ProductListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var NewEditWindow = new EditWindow(ProductListView.SelectedItem as Product);
+            if ((bool)NewEditWindow.ShowDialog())
+            {
+                // при успешном сохранении продукта перечитываем список продукции
+                ProductList = Globals.dataProvider.GetProduct();
+            }
+        }
+```
+14. Кнопка удаления:
+
+Поместим кнопку на каждый продукт в вёрстке( в StackPanel):
+
+```
+ <Button
+ HorizontalAlignment="Left"
+ Content="Удалить"
+  Tag="{Binding ID}"
+ x:Name="DeletButton"
+ Click="DeletButton_Click"
+ Margin="5"
+ Width="60"
+ Height="20"
+  />  
+```
+
+Реализация метода удаления:
+
+```
+public void DeleteProduct(Product DelProduct)
+        {
+            try
+            {
+                Connection.Open();
+                try
+                {
+                    string Query = "DELETE FROM Kt_Product WHERE ID = @ID";
+                    MySqlCommand command = new MySqlCommand(Query, Connection);
+                    command.Parameters.AddWithValue("@ID", DelProduct.ID);
+                    command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    Connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+```
+
+Далее вызвать этот метод при нажатии на кнопку удаления:
+
+```
+private void DeletButton_Click(object sender, RoutedEventArgs e)
+        {
+            var id = Convert.ToInt32((sender as Button).Tag.ToString());
+            foreach (var DelProduct in ProductList)
+            {
+                if (DelProduct.ID == id)
+                {
+                    Globals.dataProvider.DeleteProduct(DelProduct);
+                    ProductList = Globals.dataProvider.GetProduct();
+                    break;
+
+                }
+            }
+        }
+```
+
+15. Тестирование:
+
+```
+[TestClass]
+    public class UnitTest1
+    {
+        [ClassInitialize]
+        static public void Init(TestContext tc)
+        {
+            Globals.dataProvider = new FakeDataProvider();
+        }
+
+        [TestMethod]
+        public void Save_AddProductWithoutName_Error()
+        {
+            Product ProductTest = new Product()
+            {
+                Name = ""
+            };
+            try
+            {
+                ProductTest.Save();
+                Assert.Fail();
+            }
+            catch 
+            { 
+
+            }
+            
+        }
+        [TestMethod]
+        public void Save_AddCurrentProductTypeNotFilled_Error()
+        {
+            Product CurrentProductTypeTest = new Product()
+            {
+                CurrentProductType = null
+            };
+            try
+            {
+                CurrentProductTypeTest.Save();
+                Assert.Fail();
+            }
+            catch
+            {
+
+            }
+        }
+        [TestMethod]
+        public void Save_AddPriceLassAndNotNull_Error()
+        {
+            Product PriceTest = new Product()
+            {
+                Price = 0
+            };
+            try
+            {
+                PriceTest.Save();
+                Assert.Fail();
+            }
+            catch
+            {
+
+            }
+
+        }
+        [TestMethod]
+        public void Save_AddWeightProductNotFilled_Error()
+        {
+            Product WeightTest = new Product()
+            {
+                Weight = ""
+            };
+            try
+            {
+                WeightTest.Save();
+                Assert.Fail();
+            }
+            catch
+            {
+
+            }
+        }
+        [TestMethod]
+        public void Save_AddNumberProductLassAndNotNull_Error()
+        {
+            Product NumberTest = new Product()
+            {
+                Number = 0
+            };
+            try
+            {
+                NumberTest.Save();
+                Assert.Fail();
+            }
+            catch
+            {
+
+            }
+        }
+        [TestMethod]
+        public void Delete_DeleteNotProduct_Error()
+        {
+            Product IDTest = new Product()
+            {
+                ID = 0
+            };
+            try
+            {
+                IDTest.Delete();
+                Assert.Fail();
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
+    }
+```
+
+Результат выполнения всех методов тестирования:
+
+![](./Photo/test.PNG)
+
+### Проект для администрирования базы данных на языке программирования C# был завершён.
+
+# Вывод
+
+Я разработала приложение для администрирования базы данных на языке C#. Данные, которые использовались в приложении, были сформированы в базе данных MySql с помощью импорта из трёх разных типов файлов(CSV, TXT, XLS). 
+
+
+
+
+
+
+
 
 
 
