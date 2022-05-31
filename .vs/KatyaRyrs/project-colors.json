@@ -15,7 +15,12 @@
       "ProjectGuid": "1551d97c-d225-453e-a93e-aa63b5c0fa25",
       "DisplayName": "DataProviderLib",
       "ColorIndex": 1
+    },
+    "c07eec99-bfcc-44e8-a20e-3b061e96c333": {
+      "ProjectGuid": "c07eec99-bfcc-44e8-a20e-3b061e96c333",
+      "DisplayName": "KatyaRyrs.Test",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
