@@ -4,3 +4,9 @@ C:\Users\User\source\repos\KursProject\DataProviderLib\obj\Debug\DataProviderLib
 C:\Users\User\source\repos\KursProject\DataProviderLib\obj\Debug\DataProviderLib.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\KursProject\DataProviderLib\obj\Debug\DataProviderLib.dll
 C:\Users\User\source\repos\KursProject\DataProviderLib\obj\Debug\DataProviderLib.pdb
+C:\Users\aleks\source\repos\Kursov\DataProviderLib\bin\Debug\DataProviderLib.dll
+C:\Users\aleks\source\repos\Kursov\DataProviderLib\bin\Debug\DataProviderLib.pdb
+C:\Users\aleks\source\repos\Kursov\DataProviderLib\obj\Debug\DataProviderLib.csproj.AssemblyReference.cache
+C:\Users\aleks\source\repos\Kursov\DataProviderLib\obj\Debug\DataProviderLib.csproj.CoreCompileInputs.cache
+C:\Users\aleks\source\repos\Kursov\DataProviderLib\obj\Debug\DataProviderLib.dll
+C:\Users\aleks\source\repos\Kursov\DataProviderLib\obj\Debug\DataProviderLib.pdb

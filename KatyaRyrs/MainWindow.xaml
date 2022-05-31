@@ -91,17 +91,17 @@
                                      Width="300"
                                     FontWeight="Bold"
                                     Text="{Binding Price, StringFormat={}{0:N2} РУБ}"/>
-                                <Button
-                                    HorizontalAlignment="Left"
-                Content="Удалить"
-                          Tag="{Binding ID}"
-                x:Name="DeletButton"
-                Click="DeletButton_Click"
-                Margin="5"
-                Width="60"
-                Height="20"
-                />
-                            </StackPanel>
+                            <Button
+                                        HorizontalAlignment="Left"
+                        Content="Удалить"
+                                  Tag="{Binding ID}"
+                        x:Name="DeletButton"
+                        Click="DeletButton_Click"
+                        Margin="5"
+                        Width="60"
+                        Height="20"
+                        />  
+                        </StackPanel>
                         </Grid>
 
                    

@@ -7,3 +7,12 @@ C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataPro
 C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.csproj.CopyComplete
 C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.dll
 C:\Users\User\source\repos\KursProject\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.pdb
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\bin\Debug\FakeDataProviderLib.dll
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\bin\Debug\FakeDataProviderLib.pdb
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\bin\Debug\DataProviderLib.dll
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\bin\Debug\DataProviderLib.pdb
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.csproj.AssemblyReference.cache
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.csproj.CoreCompileInputs.cache
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.csproj.CopyComplete
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.dll
+C:\Users\aleks\source\repos\Kursov\FakeDataProviderLib\obj\Debug\FakeDataProviderLib.pdb

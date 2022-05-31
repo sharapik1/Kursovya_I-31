@@ -5,7 +5,17 @@
       "ProjectGuid": "11e271c8-6055-4eb4-93e5-12f5103568c6",
       "DisplayName": "KatyaRyrs",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    },
+    "1551d97c-d225-453e-a93e-aa63b5c0fa25": {
+      "ProjectGuid": "1551d97c-d225-453e-a93e-aa63b5c0fa25",
+      "DisplayName": "DataProviderLib",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
